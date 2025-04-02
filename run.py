@@ -3,7 +3,7 @@ import dotenv
 import os
 import logging
 from logging_setup import setup_logging
-from env_validate import validate_environment_variables
+from validate import validate_environment_variables, is_valid_email
 import csv
 
 # Load environment variables
@@ -18,17 +18,27 @@ def create_users(file_path, api_url):
     Reads a CSV file and sends user creation requests to the API.
     Logs successes and failures.
     """
-    
+    processed_emails = set()  # To track already processed email addresses
     with open(file_path, 'r') as f:
         reader = csv.DictReader(f)
         for row in reader:
-            user_email = row.get("email")
-            user_name = row.get("name")
-            user_role = row.get("role")
+            user_email = row.get("email").strip() # Strip whitespace
+            user_name = row.get("name").strip()
+            user_role = row.get("role").strip()
 
             # Validate required fields
             if not user_email or not user_name or not user_role:
                 logging.error("Skipping user creation for row %s: missing required data", row)
+                continue
+
+            # Validate email format
+            if not is_valid_email(user_email):
+                logging.error("Skipping user creation for row %s: invalid email format (%s)", row, user_email)
+                continue
+
+            # Check for duplicate email
+            if user_email in processed_emails:
+                logging.warning("Skipping user creation for row %s: duplicate email (%s)", row, user_email)
                 continue
 
             # Send user creation request
@@ -36,6 +46,7 @@ def create_users(file_path, api_url):
                 response = requests.post(api_url, json=row)
                 if response.status_code == 201:
                     logging.info("User creation successful: %s", user_email)
+                    processed_emails.add(user_email)  # Add email to the processed set
                 else:
                     logging.error(
                         "Error creating user %s: response code %s, response text: %s",
