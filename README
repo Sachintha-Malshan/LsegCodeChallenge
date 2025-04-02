@@ -73,7 +73,7 @@ LsegCodeChallenge/
 ├── data/                # Directory for input CSV files
 │   └── users.csv        # Example input file
 ├── logging_setup.py     # Logging configuration
-├── csv_utils.py         # CSV validation utilities
+├── env_validate.py         # Validation utilities
 ├── run.py               # Main application script
 ├── requirements.txt     # Python dependencies
 ├── .gitignore           # Git ignore file
