@@ -70,11 +70,15 @@ The CSV file should have the following headers:
 ## Project Structure
 
 LsegCodeChallenge/
-├── data/                # Directory for input CSV files
+├── data/                
 │   └── users.csv        # Example input file
-├── logging_setup.py     # Logging configuration
-├── env_validate.py         # Validation utilities
-├── run.py               # Main application script
+├── logs/
+│   └── error_log.txt    # Error logging file 
+├── logging_setup.py     # Logging config
+├── validate.py          # Validation utilities
+├── run.py               # Main script
+├── input_read.py        # Read CSV
+├── data_processing.py   # Sending HTTP requests 
 ├── requirements.txt     # Python dependencies
 ├── .gitignore           # Git ignore file
-└── README.md            # Project documentation
+└── README.md            # Project doc

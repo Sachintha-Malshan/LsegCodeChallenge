@@ -3,14 +3,14 @@ import logging
 
 def setup_logging(error_log_file):
     """
-    Configures logging for the application.
+    Configures logging.
     Logs INFO level to the console and ERROR level to a file.
     """
 
-    # Console handler for info logs
+    # Console handler| info logs
     logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
-    # File handler for error logs
+    # File handler| error logs
     file_handler = logging.FileHandler(error_log_file)
     file_handler.setLevel(logging.ERROR)
     file_handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
