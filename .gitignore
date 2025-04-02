@@ -1,0 +1,16 @@
+# Python cache files
+__pycache__/
+
+# Virtual environment
+*.env
+venv/
+
+# Logs
+logs/
+error_log.txt
+
+# Data files
+data/
+
+#test
+test.py
