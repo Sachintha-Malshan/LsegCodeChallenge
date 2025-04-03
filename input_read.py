@@ -3,7 +3,7 @@ import logging
 
 def read_csv(file_path):
     """
-    Reads a CSV file and returns its rows as a list of dictionaries.
+    Reads CSV file and returns its rows as a list of dictionaries.
     Args:
         file_path (str): Path to the CSV file.
     Returns:

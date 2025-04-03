@@ -76,6 +76,7 @@ LsegCodeChallenge/
 │   └── error_log.txt    # Error logging file 
 ├── logging_setup.py     # Logging config
 ├── validate.py          # Validation utilities
+├── user.py              # User class
 ├── run.py               # Main script
 ├── input_read.py        # Read CSV
 ├── data_processing.py   # Sending HTTP requests 

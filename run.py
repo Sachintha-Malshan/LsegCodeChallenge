@@ -2,7 +2,7 @@
 import dotenv
 import os
 from logging_setup import setup_logging
-from validate import validate_environment_variables, is_valid_email
+from validate import validate_environment_variables
 from input_read import read_csv
 from data_processing import send_req
 

@@ -2,7 +2,6 @@
 import os
 import logging
 import dotenv
-import re
 
 # Load environment variables
 dotenv.load_dotenv()
@@ -32,13 +31,3 @@ def validate_environment_variables():
 
     return api_url, input_file_path
 
-def is_valid_email(email):
-    """
-    Validates if the given email is in a valid email format.
-    Args:
-        email (str)
-    Returns:
-        bool: True if the email is valid.
-    """
-    email_regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
-    return re.match(email_regex, email) is not None
